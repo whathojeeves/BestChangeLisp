@@ -8,8 +8,8 @@
 (defun getlengths(lst minlst)
  (cond
   
-  ((null minlst) (getlengths lst (car lst)))
   ((null lst) minlst)
+  ((null minlst) (getlengths lst (car lst)))
   ((< (length (car lst)) (length minlst)) (getlengths (cdr lst) (car lst)))
   (t (getlengths (cdr lst) minlst))))
 
