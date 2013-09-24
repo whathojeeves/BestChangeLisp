@@ -3,14 +3,14 @@
    ((null  coins) nil)
    ((< total 0) nil)
    ((zerop total) (list lst))
-   (t (append (coinchange_list total (cdr coins) lst) (coinchange_list (- total (car coins)) coins (append (list (car coins)) lst))))))
+   (t (append (coinchange_list total (cdr coins) lst) (coinchange_list (- total (car coins)) coins (cons (car coins) lst))))))
 
 (defun coinchange_fail(total coins lst) 
   (cond
    ((< total 0) nil)
    ((null  coins) (list (cons total lst)))
    ;((zerop total) nil)
-   (t (append (coinchange_fail total (cdr coins) lst) (coinchange_fail (- total (car coins)) coins (append (list (car coins)) lst))))))
+   (t (append (coinchange_fail total (cdr coins) lst) (coinchange_fail (- total (car coins)) coins (cons (car coins) lst))))))
 
 (defun failcount(lst bestlst)
  (cond
